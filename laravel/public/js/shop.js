@@ -47,7 +47,7 @@ for (var i = 0; i < 10000; i++) {
   numero.push(1);
 
 }
-function cantidad(id,num,stock){
+function cantidad(id,num,stock, price){
 
   if (numero[id] <= 1 && num < 0) {
     alert('Debe poner al menos 1');
@@ -59,6 +59,7 @@ function cantidad(id,num,stock){
     document.getElementById('pro' + id).setAttribute('value',numero[id]);
     document.getElementById('cua' + id).setAttribute('value',numero[id]);
     document.getElementById('pro' + id).innerHTML = numero[id];
+    document.getElementById('cua2' + id).innerHTML = numero[id] * price;
     }
   }
 }

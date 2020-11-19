@@ -30,7 +30,7 @@ class CreateProductsTable extends Migration
 
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->bigIncrements('id_sigma');
+            $table->bigIncrements('id_sigma');
             $table->string('name', 200)->nullable();
             $table->unsignedBigInteger('id_category')->nullable();
             $table->foreign('id_category')->references('id')->on('categorys');

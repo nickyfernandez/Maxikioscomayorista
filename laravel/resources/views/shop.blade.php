@@ -153,11 +153,28 @@
                           {{-- mantener tamaño --}}
               					</a>
                       @endif
+
+                      <div class="bottom-area d-flex px-3">
+                        <div class="m-auto d-flex ">
+                          <p>
+                            <span class="price-sale1">Total:</span>
+                            <span class="price-sale1">$</span>
+                            <span id="cua2{{$producto->id}}" class="price-sale1">{{$producto->price}}</span>
+                          </p>
+                        </div>
+                      </div>
+
             					<div class="text py-3 pb-4 px-3 text-center">
-            						<h3><a href="#">{{$producto->name}}</a></h3>
+                        <?php $str = strlen($producto->name); ?>
+                        @if ($str >= 10)
+                          <p class="price-sale4">{{$producto->name}}</p>
+                        @else
+                          <p class="price-sale3">{{$producto->name}}</p>
+                        @endif
             						<div class="d-flex">
             							<div class="pricing">
-        		    						<p class="price"><span class="mr-2 price-dc">{{$producto->price}}</span><span class="price-sale">{{$producto->price}}</span></p>
+        		    						<p class="price"><span class="price-sale2">$ {{$producto->price}}</span></p>
+                            {{-- <p class="price"><span class="mr-2 price-dc">{{$producto->price}}</span><span class="price-sale">{{$producto->price}}</span></p> --}}
         		    					</div>
         	    					</div>
                       <form class="row" action="/compra/{{$producto->id}}" method="post">
@@ -179,7 +196,7 @@
         	    								{{-- <span><i class="ion-ios-menu"></i></span> --}}
                               <span><i class="ion-ios-search"></i></span>
         	    							</a>
-        	    							<a id="menos" onclick="cantidad('{{$producto->id}}',-1,{{$producto->stock}});" class="buy-now d-flex justify-content-center align-items-center mx-1">
+        	    							<a id="menos" onclick="cantidad('{{$producto->id}}',-1,{{$producto->stock}},{{$producto->price}});" class="buy-now d-flex justify-content-center align-items-center mx-1">
         	    								<span><i class="ion-ios-remove"></i></span>
         	    							</a>
                             {{-- <button type="button" onclick="cantidad('{{$producto->id}}');" class="buy-now d-flex justify-content-center align-items-center mx-1"><span><i class="ion-ios-remove"></i></span></button> --}}
@@ -191,7 +208,7 @@
                               <input type="hidden" value="1" name="quantity" > --}}
                               {{-- <p id="pro{{$producto->id}}" class="heart d-flex justify-content-center align-items-center">3
                               </p> --}}
-                            <a id="mas" onclick="cantidad('{{$producto->id}}',1,{{$producto->stock}});" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                            <a id="mas" onclick="cantidad('{{$producto->id}}',1,{{$producto->stock}},{{$producto->price}});" class="buy-now d-flex justify-content-center align-items-center mx-1">
         	    								<span><i class="ion-ios-add"></i></span>
         	    							</a>
             							</div>

@@ -76,6 +76,33 @@ body {
     height: 250px;
   }
 
+  .price-sale1{
+    font-size: 20px;
+    font-weight: bold;
+    color: #2D8302;
+  }
+
+  .price-sale2{
+    font-size: 30px;
+    font-weight: bold;
+    color: #2D8302;
+  }
+
+  .price-sale3{
+    font-size: 30px;
+    text-transform:uppercase;
+    font-weight: bold;
+    color: #82ae46;
+  }
+
+  .price-sale4{
+    font-size: 15px;
+    text-transform:uppercase;
+    /* text-transform: lowercase; */
+    font-weight: bold;
+    color: #82ae46;
+  }
+
   .cart-img{
     max-height: 70px;
   }

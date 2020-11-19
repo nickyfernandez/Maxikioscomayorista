@@ -58,6 +58,14 @@ Route::get('/carrito/mas/{id}', "CartController@mas")->middleware(['auth']);
 
 Route::get('/carrito/menos/{id}', "CartController@menos")->middleware(['auth']);
 
+Route::get('/comprobante', "CartController@listadoComprobante")->middleware(['auth'])->name('comprobante');
+
+Route::name('print')->get('/imprimir-pdf', 'CartController@imprimirComprobante');
+
+Route::get('/comprobanteb', function() {
+  return view('comprobanteb');
+});
+
 // ----------------------------------------------
 
 // Buscador
@@ -90,6 +98,15 @@ Route::get('/payments/cancelled', 'PaymentController@cancelled')->name('cancelle
 
 
 // ----------------------------------------------
+// sweet alert------------------
+Route::get('redirect', function() {
+  // alert()->basic('Basic Message', 'Mandatory Title');
+  return redirect('/')->with('errors', 'Success message');
+});
+
+
+
+// -------------------------------------------------
 
 
 // Route::get('/producto', "CandyRashController@producto");
@@ -122,6 +139,6 @@ Route::get('/payments/cancelled', 'PaymentController@cancelled')->name('cancelle
 // Route::get('/compras/{id}', "CarritoController@comprar")->middleware(['auth']);;
 // Route::post('/carrito', "CarritoController@eliminar");
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // Route::get('/home', 'HomeController@index')->name('home');

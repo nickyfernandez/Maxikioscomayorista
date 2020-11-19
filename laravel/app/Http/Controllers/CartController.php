@@ -21,7 +21,8 @@ class CartController extends Controller
     //
 
   public function listado(){
-      $id_user = Auth::user()->first();
+      // $id_user = Auth::user()->first();
+      $id_user = Auth::user();
       $usercarts = User::SearchCart($id_user->id)->first();
       $carritos = $usercarts->carts()->get();
 
@@ -61,7 +62,8 @@ class CartController extends Controller
 
       $this->validate($req, $reglas, $mensajes);
 
-      $id_user = Auth::user()->first();
+      // $id_user = Auth::user()->first();
+      $id_user = Auth::user();
       $usercarts = User::SearchCart($id_user->id)->first();
       $carritos = $usercarts->carts()->get();
       $productoRepetido = 'no';
@@ -93,7 +95,7 @@ class CartController extends Controller
       $productonuevo->save();
     }
 
-
+      alert()->success('Success Message', 'Optional Title');
       $url = url()->previous();
 
       return redirect($url);
@@ -188,6 +190,34 @@ class CartController extends Controller
     return redirect("/carrito");
   }
 
+
+  public function listadoComprobante(){
+      $id_user = Auth::user()->first();
+      $usercarts = User::SearchCart($id_user->id)->first();
+      $carritos = $usercarts->carts()->get();
+
+      foreach ($carritos as $carrito) {
+        $producto = Product::find($carrito->id_product);
+        // dd($producto);
+        if ($producto->price != $carrito->price) {
+          $arregloPrecio = Cart::find($carrito->id);
+          $arregloPrecio->price = $producto->price;
+          $arregloPrecio->save();
+        }
+      }
+
+      $productos = $usercarts->carts()->get();
+      $currencies = Currency::all();
+      $paymentPlatforms = PaymentPlatform::all();
+
+
+      return view('cart2')->with('productos', $productos)->with('currencies', $currencies)->with('paymentPlatforms', $paymentPlatforms);
+  }
+
+  public function imprimirComprobante(){
+    $pdf = \PDF::loadView('comprobanteb');
+   return $pdf->download('comprobante.pdf');
+ }
 
 
 }

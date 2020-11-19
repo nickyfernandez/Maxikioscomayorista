@@ -109,7 +109,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Make a payment</div>
-
+                <a href="/comprobante">Comprar</a>
                 <div class="card-body">
                     <form action="{{ route('pay') }}" method="POST" id="paymentForm">
                         @csrf
@@ -119,7 +119,7 @@
                                 <label>How much you want to pay?</label>
                                 <input
                                     type="number"
-                                    
+                                    min="5"
                                     step="0.01"
                                     class="form-control"
                                     name="value"

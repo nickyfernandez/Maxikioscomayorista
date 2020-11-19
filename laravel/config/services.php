@@ -67,4 +67,11 @@ return [
         'class' => App\Services\StripeService::class,
     ],
 
+    'sendinblue' => [
+        // api-key or partner-key
+        'key_identifier' => env('SENDINBLUE_KEY_IDENTIFIER', 'api-key'),
+        'key' => env('SENDINBLUE_KEY'),
+        'api_key' => env('SENDINBLUE_KEY'),
+    ],
+
 ];

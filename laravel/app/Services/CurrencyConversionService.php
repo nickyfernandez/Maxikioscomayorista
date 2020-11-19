@@ -41,7 +41,7 @@ class CurrencyConversionService
             [
                 'q' => "{$from}_{$to}",
                 'compact' => 'ultra',
-            ]
+            ],
         );
 
         return $response->{strtoupper("{$from}_{$to}")};

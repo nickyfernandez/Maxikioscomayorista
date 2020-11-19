@@ -47,7 +47,6 @@ class MercadoPagoService
 
     public function handlePayment(Request $request)
     {
-        
         // dd($request->all());
         $request->validate([
             'card_network' => 'required',
@@ -60,7 +59,7 @@ class MercadoPagoService
             $request->currency,
             $request->card_network,
             $request->card_token,
-            $request->email
+            $request->email,
         );
 
         if ($payment->status === "approved") {
@@ -97,14 +96,14 @@ class MercadoPagoService
                     'email' => $email,
                 ],
                 'binary_mode' => true,
-                'transaction_amount' => round($value * $this->resolveFactor($currency)),
+                'transaction_amount' => round($value),
                 'payment_method_id' => $cardNetwork,
                 'token' => $cardToken,
                 'installments' => $installments,
                 'statement_descriptor' => config('app.name'),
             ],
             [],
-            $isJsonRequest = true
+            $isJsonRequest = true,
         );
     }
 

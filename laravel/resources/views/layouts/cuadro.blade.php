@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/animate.css">
 
+    <link rel="stylesheet" href="/js/sweetalert.css">
+
 
     <link rel="stylesheet" href="/css/owl.carousel.min.css">
     {{-- <link rel="stylesheet" href="/css/owl.theme.default.min.css"> --}}
@@ -184,7 +186,7 @@
                 </ul>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/#contact">Contacto</a>
+                    <a class="nav-link" href="redirect">Contacto</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/faq">Ayuda</a>
@@ -236,7 +238,7 @@
                   </ul>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/#contact">Contacto</a>
+                    <a class="nav-link" href="redirect">Contacto</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/faq">Ayuda</a>
@@ -357,11 +359,13 @@
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
       <script src="/js/google-map.js"></script>
       <script src="/js/main.js"></script>
+      <script src="/js/sweetalert.min.js"></script>
 
       {{-- buscador --}}
       <script src="/js/shop.js"></script>
       {{-- <script src="/js/filtrar.js"></script> --}}
       @stack('scripts')
+      @include('sweet::alert')
 
       </body>
     </html>
